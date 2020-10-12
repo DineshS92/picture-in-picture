@@ -1,5 +1,6 @@
 const videoElement = document.getElementById('video');
 const button = document.getElementById('button');
+const startCapture = document.getElementById('capture');
 
 // Prompt user to select a media stream, pass it to video element, play
 
@@ -15,6 +16,9 @@ const selectMediaStream = async() => {
   }
 }
 
+// Prompt capture when button clicked
+startCapture.addEventListener('click', selectMediaStream);
+
 button.addEventListener('click', async() => {
   // Disable the button
   button.disabled = true;
@@ -22,7 +26,3 @@ button.addEventListener('click', async() => {
   await videoElement.requestPictureInPicture();
   button.disabled = false;
 });
-
-
-// On Load
-selectMediaStream();
